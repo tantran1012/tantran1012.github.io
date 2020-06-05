@@ -83,11 +83,11 @@ function sobel(imgData) {
             //Current position
             var center = i * rowStep + j * colStep;
             var dx = data[center - rowStep + colStep] - data[center - rowStep - colStep] +    //topR - topL
-                     ((data[center + colStep] - data[center - colStep]) << 1) +               //R - L
+                     ((data[center + colStep] - data[center - colStep]) << 1) +               //(R - L)*2
                      data[center + rowStep + colStep] - data[center + rowStep - colStep];     //botR - botL
 
             var dy = data[center + rowStep - colStep] - data[center - rowStep - colStep] +    //botL - topL
-                     ((data[center + rowStep] - data[center - rowStep]) << 1) +               //bot - top
+                     ((data[center + rowStep] - data[center - rowStep]) << 1) +               //(bot - top)*2
                      data[center + rowStep + colStep] - data[center - rowStep + colStep];     //botR - topR
 
             if (Math.sqrt(dx * dx + dy * dy) >= 150)
